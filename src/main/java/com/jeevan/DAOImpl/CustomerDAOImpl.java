@@ -40,5 +40,19 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 		return cl;
 	}
+	
+	
+	public Customer1 getBalanceByid(Integer id) {
+		System.out.println("in getBalanceByid DAO ");
+		Session session=sessionFactory.openSession();
+		Transaction ts = session.beginTransaction();
+		Customer1 c=(Customer1) session.get(Customer1.class, id);
+		
+		System.out.println("c.getBalance()"+c.getBalance());
+		
+		System.out.println("c.getAcNo()  :"+c.getAcNo());
+		return c;
+		
+	}
 
 }

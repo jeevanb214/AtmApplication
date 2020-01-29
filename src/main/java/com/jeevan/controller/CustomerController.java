@@ -3,6 +3,8 @@ package com.jeevan.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,4 +51,16 @@ public class CustomerController {
 		return "CustomerDetails.jsp";
 	}
 
+	@RequestMapping("/BalanceEnquiry")
+	public String balanceByid(HttpServletRequest req,Model m )
+	{
+		Integer id=Integer.parseInt(req.getParameter("acno"));
+		
+		Customer1 customer=service.getBalanceByid(id);
+		
+		System.out.println("Again in balanceByid   :"+customer.getBalance());
+		m.addAttribute("customer", customer);
+		
+		return "ShowBalance.jsp"; 
+	}
 }
