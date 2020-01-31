@@ -31,5 +31,21 @@ public class CustomerServiceImpl implements CustomerService {
 		Customer1 c = cd.getBalanceByid(id);
 		return c;
 	}
+	
+	public boolean verifyAccountByPin(Integer pin,Integer accNum)
+	{
+		
+		return cd.verifyAccountByPin(pin,accNum);
+	}
+
+	public Integer withdraw(Integer accNum, Integer ammount) {
+		
+		return cd.withdraw(accNum, ammount);
+	}
+	
+	public void deposit(int acno, int amount) {		
+		cd.deposit(acno, amount);
+		
+	}
 
 }

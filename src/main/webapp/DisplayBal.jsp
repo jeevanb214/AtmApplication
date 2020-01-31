@@ -8,9 +8,9 @@
 </head>
 <body>
 	<center>
+		<h2>Please Collect Your Cash</h2>
+		<h4>Remaing Balance is : ${balance}</h4>
 		<br>
-		<br>
-		<h2>Your Balance is : ${customer.balance}</h2>
 		<br>
 		<form action="index.jsp">
 			<input type="submit" value="Homepage">

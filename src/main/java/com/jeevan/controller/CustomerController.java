@@ -52,15 +52,37 @@ public class CustomerController {
 	}
 
 	@RequestMapping("/BalanceEnquiry")
-	public String balanceByid(HttpServletRequest req,Model m )
-	{
-		Integer id=Integer.parseInt(req.getParameter("acno"));
-		
-		Customer1 customer=service.getBalanceByid(id);
-		
-		System.out.println("Again in balanceByid   :"+customer.getBalance());
+	public String balanceByid(HttpServletRequest req, Model m) {
+		Integer id = Integer.parseInt(req.getParameter("acno"));
+
+		Customer1 customer = service.getBalanceByid(id);
+
+		System.out.println("Again in balanceByid   :" + customer.getBalance());
 		m.addAttribute("customer", customer);
-		
-		return "ShowBalance.jsp"; 
+
+		return "ShowBalance.jsp";
+	}
+
+	@RequestMapping("/fundTranser")
+	public String fundTranser(HttpServletRequest req, Model m) {
+		Integer acno1 = Integer.parseInt(req.getParameter("acno1"));
+		Integer pin = Integer.parseInt(req.getParameter("pin"));
+		Integer ammount = Integer.parseInt(req.getParameter("amount"));
+		Integer acno2 = Integer.parseInt(req.getParameter("acno2"));
+
+		if (service.verifyAccountByPin(pin, acno1)) {
+			Integer afterAmmount = service.withdraw(acno1, ammount);
+			if (afterAmmount == 0)
+				return "errorBal.jsp";
+			else {
+				m.addAttribute("balance", afterAmmount);
+				service.deposit(acno2, ammount);
+				return "DisplayBal.jsp";
+			}
+
+		} else {
+			return "errorpassword.jsp";
+		}
+
 	}
 }

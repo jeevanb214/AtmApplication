@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" isELIgnored="false"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,12 +8,9 @@
 </head>
 <body>
 	<center>
-		<br>
-		<br>
-		<h2>Your Balance is : ${customer.balance}</h2>
-		<br>
-		<form action="index.jsp">
-			<input type="submit" value="Homepage">
+		<h2>Insufficient Funds</h2>
+		<form action="fundtransfer.jsp">
+			<input type="submit" value="back">
 		</form>
 	</center>
 </body>
