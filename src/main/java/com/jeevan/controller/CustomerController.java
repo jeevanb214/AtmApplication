@@ -85,4 +85,21 @@ public class CustomerController {
 		}
 
 	}
+
+	@RequestMapping("/VerifyCustomer")
+	public String withdraw(HttpServletRequest req, Model m) {
+		Integer accNum = Integer.parseInt(req.getParameter("acno"));
+		Integer pin = Integer.parseInt(req.getParameter("pin"));
+		Integer ammount = Integer.parseInt(req.getParameter("ammount"));
+
+		if (service.verifyAccountByPin(pin, accNum)) {
+			Integer afterAmmount = service.withdraw(accNum, ammount);
+			if (afterAmmount == 0)
+				return "errorBal.jsp";
+			else {
+				m.addAttribute("balance", afterAmmount);
+			}
+		}		 
+		return "DisplayBal.jsp";
+	}
 }
