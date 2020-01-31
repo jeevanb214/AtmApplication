@@ -78,7 +78,10 @@ public class CustomerDAOImpl implements CustomerDAO {
 			return 0;
 		else {
 			c.setBalance(beforeAmmount - ammount);
-			return beforeAmmount - ammount;
+			session.update(c);
+			ts.commit();
+			session.close();
+			return (beforeAmmount - ammount);
 		}
 
 	}
@@ -89,7 +92,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 		Customer1 c = (Customer1) session.get(Customer1.class, accNum);
 		Integer beforeAmmount = c.getBalance();
 		c.setBalance(beforeAmmount + ammount);
-		
+		session.update(c);
+		ts.commit();
+		session.close();
 	}
 
 }
