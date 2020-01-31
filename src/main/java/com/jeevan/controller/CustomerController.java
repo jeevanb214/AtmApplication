@@ -86,7 +86,7 @@ public class CustomerController {
 
 	}
 
-	@RequestMapping("/VerifyCustomer")
+	@RequestMapping("/withdraw")
 	public String withdraw(HttpServletRequest req, Model m) {
 		Integer accNum = Integer.parseInt(req.getParameter("acno"));
 		Integer pin = Integer.parseInt(req.getParameter("pin"));
@@ -102,4 +102,14 @@ public class CustomerController {
 		}		 
 		return "DisplayBal.jsp";
 	}
+	
+	@RequestMapping("/deposit")
+	public String deposit(HttpServletRequest req, Model m)
+	{
+		Integer accNum = Integer.parseInt(req.getParameter("acno"));
+		Integer ammount = Integer.parseInt(req.getParameter("ammount"));
+		service.deposit(accNum, ammount);
+		return "deposit.jsp";
+	}
+	
 }

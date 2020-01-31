@@ -7,14 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<center>
-		<form action="withdraw">
+		<form action="deposit">
 			Enter your A\c No : <input type="text" name="acno"> <br>
-			<br> Enter your pin : <input type="password" name="pin">
-			<br> <br> Enter Amount : <input type="text" name="ammount">
-			<br>
-			<br> <input type="submit" value="Withdraw">
+			<br> Enter Amount : <input type="text" name="ammount"> <br>
+			<br> <input type="submit" value="deposit">
 		</form>
 	</center>
+
 </body>
 </html>
